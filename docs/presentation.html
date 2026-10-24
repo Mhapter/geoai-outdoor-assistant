@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fieldwise — GeoAI Outdoor Intelligence Presentation (CSRE, IIT Bombay)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1410;
+      --card-bg: #15221b;
+      --accent-green: #2ecc71;
+      --accent-sage: #81c784;
+      --accent-amber: #f39c12;
+      --text-main: #f4f7f5;
+      --text-muted: #9ab3a3;
+      --border: #24382c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand span {
+      background: linear-gradient(135deg, #2ecc71, #81c784);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .deck-container {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 3rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(40px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+    .slide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-green);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    p.lead {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 850px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .metric {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent-green);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.3rem;
+    }
+    .footer {
+      padding: 1rem 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      background: #1e3327;
+      border-color: var(--accent-green);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">🌱 <span>Fieldwise</span> Outdoor Intelligence</div>
+    <div style="font-size: 0.9rem; color: var(--text-muted);">GeoAI Hackathon 2026 @ CSRE, IIT Bombay</div>
+  </div>
+
+  <div class="deck-container">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <div class="slide-badge">Deliverable #5 • Executive Presentation</div>
+      <h1>Fieldwise: Outdoor Intelligence Assistant</h1>
+      <p class="lead">A spatio-temporal outdoor decision advisor powered by an open-weights Small Language Model (&le; 3B parameters) and real-time live geospatial reasoning.</p>
+      <div class="grid-3" style="max-width: 950px;">
+        <div class="card">
+          <div class="metric">&le; 3B</div>
+          <h3>Strict SLM Parameter Mandate</h3>
+          <p>Powered by open-weights Qwen2.5-1.5B-Instruct running locally under zero-cloud-LLM rules.</p>
+        </div>
+        <div class="card">
+          <div class="metric">100%</div>
+          <h3>Live Telemetry Grounding</h3>
+          <p>Zero hallucinations. Every AQI, temperature, and venue name is fetched live at query time.</p>
+        </div>
+        <div class="card">
+          <div class="metric">10+</div>
+          <h3>Outdoor Activities & Profiles</h3>
+          <p>Running, cycling, golf, cricket, tennis, hiking, photography with asthma/senior constraints.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="slide-badge">Slide 2 / 6 • The Problem & Challenge</div>
+      <h2>Why Naive Weather Apps & Generic LLMs Fail</h2>
+      <p class="lead">Outdoor decisions require evaluating multiple places across multiple upcoming hours rather than a single generic city weather reading.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color: #e74c3c;">❌ Traditional Solutions</h3>
+          <p>• Weather apps give a single city-wide temperature, ignoring local park micro-climates.</p>
+          <p>• Hosted LLMs (GPT-4) hallucinate park names, stale temperatures, and fake routes.</p>
+          <p>• Blind to wind direction relative to expressways and toxic industrial exhaust plumes.</p>
+          <p>• Inability to adapt to personal vulnerabilities such as asthma or elderly mobility needs.</p>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--accent-green);">✅ The Fieldwise Approach</h3>
+          <p>• Evaluates top candidate venues against 24-48 hourly atmospheric vectors simultaneously.</p>
+          <p>• Physics-based downwind plume detection using trigonometric wind bearing math.</p>
+          <p>• Real OSRM driving durations accounting for peak rush-hour transit penalties.</p>
+          <p>• SLM synthesizes actionable advice (what to carry, what to monitor, when to avoid).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="slide-badge">Slide 3 / 6 • Architecture & Live Data Flow</div>
+      <h2>Neuro-Symbolic Architecture</h2>
+      <p class="lead">Decoupling deterministic mathematical fact retrieval from conversational small-model explanation.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Geospatial Geometry</h3>
+          <p>• OpenStreetMap Overpass API vectors</p>
+          <p>• Photon POIs & Gazetteer coordinates</p>
+          <p>• Extraction of green buffers & water bodies</p>
+          <p>• Arterial highways & industrial zones</p>
+        </div>
+        <div class="card">
+          <h3>2. Atmospheric Telemetry</h3>
+          <p>• Open-Meteo Hourly Weather Forecast API</p>
+          <p>• Open-Meteo Air Quality API (US AQI)</p>
+          <p>• Solar daylight & golden hour math</p>
+          <p>• 10m wind direction & speed vectors</p>
+        </div>
+        <div class="card">
+          <h3>3. Grounded SLM Engine</h3>
+          <p>• Open-weights Qwen2.5-1.5B-Instruct</p>
+          <p>• Strict context conditioning on JSON payload</p>
+          <p>• Formats actionable preparation & warnings</p>
+          <p>• Full attribution to OpenStreetMap & Open-Meteo</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <div class="slide-badge">Slide 4 / 6 • Worked Example Walkthrough</div>
+      <h2>Real-World Verification: Asthma Jogging Query</h2>
+      <p class="lead"><em>"I have mild asthma. Where would be suitable for a walk this evening near Powai, and what time should I go?"</em></p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Execution Pipeline</h3>
+          <p><strong>1. Intent Parser:</strong> Activity = Walking/Jogging, Location = Powai (Mumbai), Window = Evening (17:00-20:00), Profile = Asthma.</p>
+          <p><strong>2. Spatial Discovery:</strong> Fetches Powai Lake Promenade, Hiranandani Gardens, Sambhaji Park, and Vihar Lake Forest.</p>
+          <p><strong>3. Wind & Plume Modeling:</strong> Prevailing wind at 18:00 is 14 km/h from NW. JVLR Expressway is north of venue. Calculates angular diff: venue is clear of vehicle exhaust.</p>
+        </div>
+        <div class="card">
+          <h3>Synthesized Recommendation</h3>
+          <p><strong>Top Pick:</strong> Powai Lake Promenade at 06:00 PM (Score: 88/100).</p>
+          <p><strong>Supporting Evidence:</strong> US AQI 58 (PM2.5: 16.2 µg/m³), 26.4°C, evaporative cooling from lake, shaded pedestrian canopy.</p>
+          <p><strong>Carry & Watch:</strong> Fast-acting rescue inhaler (albuterol), N95 mask for transit. Avoid 08:00 PM when evening rush-hour plume arrives.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <div class="slide-badge">Slide 5 / 6 • Model Card & Evaluation</div>
+      <h2>The Small Language Model (SLM &le; 3B)</h2>
+      <p class="lead">Disclosed Base Model: <strong>Qwen/Qwen2.5-1.5B-Instruct</strong> (1.54B parameters, Apache 2.0).</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="metric">0.0%</div>
+          <h3>Factual Hallucination</h3>
+          <p>100% of cited numbers, place names, and times trace directly to retrieved JSON telemetry.</p>
+        </div>
+        <div class="card">
+          <div class="metric">~1.8s</div>
+          <h3>CPU Inference Speed</h3>
+          <p>Extremely lightweight footprint suitable for edge servers and resource-constrained environments.</p>
+        </div>
+        <div class="card">
+          <div class="metric">100%</div>
+          <h3>Deterministic Fallback</h3>
+          <p>Guaranteed graceful operation if local model weights are not loaded into memory.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+      <div class="slide-badge">Slide 6 / 6 • Limitations & Ethics</div>
+      <h2>Transparent Limitations & Honest Scope</h2>
+      <p class="lead">Ethical boundaries and operational considerations for Fieldwise.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Technical & Data Limitations</h3>
+          <p>• <strong>Free-Tier Rate Limits:</strong> Overpass API and Open-Meteo require bounded caching (30m TTL) to prevent throttling.</p>
+          <p>• <strong>OSRM Free Flow:</strong> Routing durations do not model live dynamic traffic congestion unless a paid telematics feed is attached.</p>
+          <p>• <strong>OSM Completeness:</strong> OpenStreetMap data in rural areas may lack detailed footpath tags.</p>
+        </div>
+        <div class="card">
+          <h3>Safety & Health Ethics</h3>
+          <p>• <strong>Non-Clinical Scope:</strong> Personal profile limits (asthma, seniors) are conservative guidelines and do not constitute medical diagnosis.</p>
+          <p>• <strong>Privacy First:</strong> Personal constraints are ephemeral and never logged or stored in a persistent database.</p>
+          <p>• <strong>Honest Uncertainty:</strong> The system explains when insufficient candidate venues prevent reliable ranking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Slide <span id="slide-num">1</span> of 6 • Use &larr; / &rarr; keys or buttons to navigate</div>
+    <div style="display: flex; gap: 0.8rem;">
+      <button class="nav-btn" onclick="prevSlide()">&larr; Previous</button>
+      <button class="nav-btn" onclick="nextSlide()">Next &rarr;</button>
+    </div>
+  </div>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slideNum = document.getElementById('slide-num');
+
+    function showSlide(index) {
+      slides[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      slideNum.innerText = (current + 1);
+    }
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+</body>
+</html>

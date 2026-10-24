@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --bg-warm: #faf8f5;
+  --surface: #ffffff;
+  --surface-sage: #f2f6f3;
+  --border-subtle: #e5e0d8;
+  --border-focus: #2d5a3f;
+  --text-primary: #15221b;
+  --text-secondary: #57685e;
+  --text-muted: #829288;
+  --forest-900: #122117;
+  --forest-800: #1b2f22;
+  --forest-700: #264331;
+  --forest-600: #335942;
+  --amber-600: #c27803;
+  --amber-100: #fef3c7;
+  --red-600: #dc2626;
+  --red-100: #fee2e2;
+  --green-600: #16a34a;
+  --green-100: #dcfce7;
+}
+
+body {
+  background-color: var(--bg-warm);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4cec4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b5ad9f;
+}
+
+/* Leaflet map custom markers & container */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: #e8ecdf;
+  font-family: inherit;
+}
+
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+.custom-marker:hover {
+  transform: scale(1.15);
+}
+
+.marker-top {
+  background-color: #264331;
+  border: 2px solid #ffffff;
+}
+
+.marker-alt {
+  background-color: #4a6b57;
+  border: 2px solid #ffffff;
+}
+
+.marker-origin {
+  background-color: #c27803;
+  border: 2px solid #ffffff;
+}
+
+.marker-avoid {
+  background-color: #dc2626;
+  border: 2px solid #ffffff;
+}
