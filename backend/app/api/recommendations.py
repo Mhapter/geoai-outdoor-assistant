@@ -33,6 +33,24 @@ async def autocomplete_places(q: str = Query(..., min_length=1, description="Pla
     return {"status": "ok", "query": q, "suggestions": suggestions}
 
 
+@router.get("/recommendations")
+async def get_recommendations_info():
+    """
+    Provides usage guidance and interactive links when accessed via HTTP GET in web browsers.
+    """
+    return {
+        "status": "online",
+        "endpoint": "/api/recommendations",
+        "method": "POST",
+        "description": "Fieldwise Spatio-Temporal Outdoor Decision Recommendation Engine (CSRE IIT Bombay GeoAI Hackathon 2026).",
+        "interactive_docs": "/docs",
+        "sample_post_body": {
+            "question": "Where can I go running tomorrow morning near Powai?"
+        },
+        "sample_curl": 'curl -X POST "/api/recommendations" -H "Content-Type: application/json" -d \'{"question": "Where can I go running tomorrow morning near Powai?"}\''
+    }
+
+
 @router.post("/recommendations", response_model=RecommendationResponse)
 async def create_recommendation(req: QueryRequest):
     """
