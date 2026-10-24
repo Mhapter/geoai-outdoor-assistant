@@ -9,7 +9,7 @@ import httpx
 import diskcache
 from app.geo.spatial_context import haversine_km
 
-cache = diskcache.Cache("./.geoai_cache_v5")
+from app.cache import cache
 CACHE_TTL = 3600  # 1 hour cache for routes
 
 USER_AGENT = "Fieldwise-Outdoor-Intelligence/1.0 (https://csre.iitb.ac.in; geoai@csre.iitb.ac.in)"

@@ -15,7 +15,7 @@ import httpx
 import diskcache
 from app.geo.spatial_math import haversine_km
 
-cache = diskcache.Cache("./.geoai_cache_v5")
+from app.cache import cache
 CACHE_TTL = 86400 * 7  # 7-day cache for verified place photos
 
 USER_AGENT = "FieldwiseOutdoorAssistant/2.0 (https://csre.iitb.ac.in; geoai@csre.iitb.ac.in)"

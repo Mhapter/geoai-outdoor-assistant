@@ -18,7 +18,7 @@ from app.schemas.location_models import VerificationStatus
 from app.services.location_verification import verification_pipeline
 
 logger = logging.getLogger("fieldwise.spatial")
-cache = diskcache.Cache("./.geoai_cache_v5")
+from app.cache import cache
 CACHE_TTL = 1800  # 30 minutes
 
 USER_AGENT = "Fieldwise-Outdoor-Intelligence/2.0 (CSRE IIT Bombay GeoAI; contact: geoai@csre.iitb.ac.in)"

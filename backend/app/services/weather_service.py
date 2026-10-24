@@ -12,7 +12,7 @@ from typing import Dict, Any, Optional
 import httpx
 import diskcache
 
-cache = diskcache.Cache("./.geoai_cache_v5")
+from app.cache import cache
 CACHE_TTL = 1800  # 30 minutes cache for forecasts
 
 USER_AGENT = "Fieldwise-Outdoor-Intelligence/1.0 (https://csre.iitb.ac.in; geoai@csre.iitb.ac.in)"

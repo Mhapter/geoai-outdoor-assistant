@@ -23,7 +23,7 @@ from app.schemas.location_models import (
 )
 
 logger = logging.getLogger("fieldwise.geocoding")
-cache = diskcache.Cache("./.geoai_cache_v5")
+from app.cache import cache
 CACHE_TTL = 86400  # 24 hours for spatial lookups
 
 USER_AGENT = "Fieldwise-Outdoor-Intelligence/2.0 (CSRE IIT Bombay GeoAI; contact: geoai@csre.iitb.ac.in)"

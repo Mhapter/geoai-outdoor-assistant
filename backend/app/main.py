@@ -70,10 +70,18 @@ async def ask_compatibility(req: QueryRequest):
 async def get_presentation():
     """Serves the interactive 6-slide GeoAI presentation deck."""
     import os
-    presentation_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "docs", "presentation.html"))
-    if os.path.exists(presentation_path):
-        with open(presentation_path, "r", encoding="utf-8") as f:
-            return HTMLResponse(content=f.read())
+    candidates = [
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "docs", "presentation.html")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "docs", "presentation.html")),
+        os.path.abspath(os.path.join(os.getcwd(), "docs", "presentation.html"))
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    return HTMLResponse(content=f.read())
+            except Exception:
+                pass
     return HTMLResponse(content="<h1>Presentation not found</h1>", status_code=404)
 
 
