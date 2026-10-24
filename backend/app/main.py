@@ -9,7 +9,7 @@ with an open-weights <= 3B parameter Small Language Model.
 import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 
 # Ensure terminal handles UTF-8 safely
 if hasattr(sys.stdout, "reconfigure"):
@@ -64,6 +64,17 @@ async def ask_compatibility(req: QueryRequest):
     res_dict["top_venue_slots"] = [res.best_recommendation.model_dump()] if res.best_recommendation else []
     res_dict["alternatives_compared"] = [a.model_dump() for a in res.alternative_venues]
     return res_dict
+
+
+@app.get("/presentation", tags=["Presentation"], response_class=HTMLResponse)
+async def get_presentation():
+    """Serves the interactive 6-slide GeoAI presentation deck."""
+    import os
+    presentation_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "docs", "presentation.html"))
+    if os.path.exists(presentation_path):
+        with open(presentation_path, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    return HTMLResponse(content="<h1>Presentation not found</h1>", status_code=404)
 
 
 @app.get("/", tags=["Root"])
